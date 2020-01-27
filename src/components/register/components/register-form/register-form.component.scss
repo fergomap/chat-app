@@ -1,0 +1,34 @@
+@import '../../../../styles/variables';
+
+.register-form-component {
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient($primary-color, white);
+
+  @media (max-width: $md) {
+    justify-content: flex-start;
+  }
+
+  form {
+    padding: 20px;
+    min-width: 40%;
+    display: flex;
+    flex-direction: column;
+    border: solid 1px $primary-color;
+    border-radius: 3px;
+
+    @media (max-width: $md) {
+      min-width: 100%;
+    }
+
+    input, button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px 5px;
+    }
+  }
+}

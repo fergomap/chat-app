@@ -1,0 +1,36 @@
+@import '../../../../../../styles/variables';
+
+.go-back-header {
+  height: 60px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+
+  svg {
+    display: none;
+  }
+
+  @media (max-width: $md) {
+    height: 40px;
+    background-color: $primary-color;
+    color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+    svg {
+      display: block;
+      width: 20px;
+      height: 20px;
+      fill: white;
+      position: absolute;
+      left: 10px;
+    }
+  }
+
+  h4 {
+    margin: 0;
+  }
+}

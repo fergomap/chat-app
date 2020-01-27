@@ -1,0 +1,80 @@
+@import '../../../../../../styles/variables';
+
+.chat-component {
+  height: 100%;
+
+  .messages {
+    height: calc(100% - 116px);
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: $md) {
+      height: 100%;
+      padding: 56px 10px;
+    }
+
+    .message {
+      width: fit-content;
+      padding: 5px 10px;
+      border-radius: 3px;
+      margin-bottom: 5px;
+      display: grid;
+
+      .time {
+        font-size: 10px;
+        color: $light-gray;
+      }
+    }
+
+    .sent-message {
+      align-self: flex-end;
+      background-color: $primary-color;
+      color: white;
+      text-align: right;
+    }
+
+    .received-message {
+      align-self: flex-start;
+      background-color: white;
+    }
+  }
+
+  .message-input {
+    height: 56px;
+    padding: 10px 20px;
+    background-color: white;
+
+    input, button {
+      height: 100%;
+    }
+
+    input {
+      width: 90%;
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+    }
+
+    button {
+      width: 10%;
+      border-top-left-radius: 0 !important;
+      border-bottom-left-radius: 0 !important;
+    }
+
+    @media (max-width: $md) {
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      padding: 10px;
+
+      button {
+        width: 25%;
+      }
+
+      input {
+        width: 75%;
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+@import '../../../../styles/variables';
+
+.chats-component {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - #{$header-height});
+
+  @media (max-width: $md) {
+    height: calc(100vh - #{$header-height-md});
+  }
+
+  .chats-list {
+    width: 20%;
+
+    @media (max-width: $md) {
+      width: 100%;
+    }
+  }
+
+  .chat-info {
+    width: 80%;
+    background-color: $light-gray;
+
+    @media (max-width: $md) {
+      width: 100%;
+    }
+  }
+}
+
+.chats-component-no-header {
+  @media (max-width: $md) {
+    height: 100vh;
+  }
+}

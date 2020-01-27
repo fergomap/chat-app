@@ -1,0 +1,13 @@
+@import '../../styles/variables';
+
+.offline-component {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: $warning;
+  color: white;
+  height: $header-height;
+  display: flex;
+  align-items: center;
+}

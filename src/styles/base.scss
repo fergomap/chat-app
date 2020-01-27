@@ -1,0 +1,54 @@
+@import 'variables';
+
+input, button {
+  outline: none !important;
+  border-radius: 3px !important;
+  padding: 5px 10px;
+}
+
+input {
+  border: solid 1px $light-gray;
+
+  &:focus {
+    border: solid 1px $primary-color;
+  }
+}
+
+button {
+  border: none;
+  color: white;
+  font-weight: bold;
+  background-color: $primary-color;
+}
+
+.danger-button {
+  background-color: $error;
+}
+
+.error {
+  color: $error;
+}
+
+.input-error {
+  border-color: $error !important;
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.hidden-mobile {
+  @media (max-width: $md) {
+    display: none !important;
+  }
+}
+
+.hidden {
+  display: none !important;
+}
+
+a {
+  text-decoration: none !important;
+}

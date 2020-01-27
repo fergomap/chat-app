@@ -1,0 +1,33 @@
+@import '../../../../../../styles/variables';
+
+.create-chat-component {
+  form {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: $md) {
+      padding-top: 60px;
+    }
+
+    input, button {
+      margin-top: 10px;
+    }
+  }
+
+  .results {
+    padding: 0 20px;
+    margin-top: 10px;
+
+    .result {
+      padding: 5px 10px;
+      background-color: $primary-color;
+      color: white;
+      border-radius: 3px;
+      cursor: pointer;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      display: inline-block;
+    }
+  }
+}
