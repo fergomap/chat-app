@@ -19,22 +19,22 @@ interface ChatComponentProps {
     chats: Chat[];
 }
 
+const setShowChatListAction = (dispatch: Function): void => {
+    dispatch(SET_SHOW_CHAT_LIST_ACTION);
+};
+
 const ChatComponent: FunctionComponent<ChatComponentProps & RouteComponentProps<{ id: string }> & DispatchProps> = (props) => {
     const [ chat, setChat ] = useState(new ChatImp());
     const [ message, setMessage ] = useState('');
     const [ error, setError ] = useState(false);
 
-    const setShowChatListAction = (): void => {
-        props.dispatch(SET_SHOW_CHAT_LIST_ACTION);
-    };
-
     useEffect(() => {
-        window.addEventListener("popstate", setShowChatListAction);
+        window.addEventListener("popstate", () => setShowChatListAction(props.dispatch));
 
         return () => {
-            window.removeEventListener("popstate", setShowChatListAction);
+            window.removeEventListener("popstate", () => setShowChatListAction(props.dispatch));
         };
-    }, []);
+    }, [props.dispatch]);
 
     useEffect(() => {
         setChat(props.chats.find((c: Chat) => c.id === props.match.params.id) || new ChatImp());

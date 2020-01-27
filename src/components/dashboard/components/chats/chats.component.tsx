@@ -1,4 +1,4 @@
-import React, {Component, ReactElement, FunctionComponent, useEffect} from 'react';
+import React, {ReactElement, FunctionComponent, useEffect} from 'react';
 import './chats.component.scss';
 import MainState from 'store/model/main.state';
 import {connect} from 'react-redux';
@@ -21,13 +21,13 @@ interface ChatsComponentProps {
     showChatList: boolean;
 }
 
-const ChatsComponent: FunctionComponent<ChatsComponentProps & DispatchProps> = (props): ReactElement => {
+const ChatsComponent: FunctionComponent<ChatsComponentProps & DispatchProps> = ({dispatch, username, showChatList}): ReactElement => {
     
     useEffect(() => {
-        const chatListener = new EventSource(APP_CONSTANTS.ENDPOINTS.LISTEN_CHATS + props.username);
+        const chatListener = new EventSource(APP_CONSTANTS.ENDPOINTS.LISTEN_CHATS + username);
         const setChatListenerAction = {...SET_CHAT_LISTENER_ACTION};
         setChatListenerAction.chatListener = chatListener;
-        props.dispatch(setChatListenerAction);
+        dispatch(setChatListenerAction);
 
         chatListener.onmessage = (event) => {
             const data = JSON.parse(event.data);
@@ -35,21 +35,21 @@ const ChatsComponent: FunctionComponent<ChatsComponentProps & DispatchProps> = (
             if (Array.isArray(data)) {
                 const setChatsAction = {...SET_CHATS_ACTION};
                 setChatsAction.chats = jsonConvert.deserializeArray(data, ChatImp);
-                props.dispatch(setChatsAction);
+                dispatch(setChatsAction);
             } else {
                 const addMessageAction = {...ADD_MESSAGE_ACTION};
                 addMessageAction.message = jsonConvert.deserializeObject(data, MessageImp);
-                props.dispatch(addMessageAction);
+                dispatch(addMessageAction);
             }
         };
-    }, []);
+    }, [username, dispatch]);
 
     
-    return <div className={`chats-component ${!props.showChatList && 'chats-component-no-header'}`}>
-        <div className={`chats-list ${!props.showChatList && 'hidden-mobile'}`}>
+    return <div className={`chats-component ${!showChatList && 'chats-component-no-header'}`}>
+        <div className={`chats-list ${!showChatList && 'hidden-mobile'}`}>
             <ChatsListComponent/>
         </div>
-        <div className={`chat-info ${props.showChatList && 'hidden-mobile'}`}>
+        <div className={`chat-info ${showChatList && 'hidden-mobile'}`}>
             <Switch>
                 <Route path={APP_CONSTANTS.ROUTES.CREATE_CHAT} component={CreateChatComponent} />
                 <Route path={APP_CONSTANTS.ROUTES.CHAT} component={ChatComponent} />
