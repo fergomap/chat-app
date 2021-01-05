@@ -9,7 +9,7 @@
     "@types/react-dom": "16.8.4",
     "@types/socket.io-client": "^1.4.32",
     "@types/styled-components": "^4.1.15",
-    "axios": "^0.19.1",
+    "axios": "^0.21.1",
     "bootstrap": "^4.4.1",
     "json2typescript": "^1.2.3",
     "moment": "^2.24.0",
